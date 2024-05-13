@@ -1,0 +1,52 @@
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        merge_sort(left_half)
+        merge_sort(right_half)
+
+        i, j, k = 0, 0, 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+
+def Merge_sort():
+    n = int(input("Enter the number of elements: "))
+    num_array = []
+    for _ in range(n):
+        num = int(input("Enter a number: "))
+        num_array.append(num)
+
+    
+    search_num = int(input("Enter a number to search for: "))
+    count = num_array.count(search_num)
+
+    if count > 0:
+        print(count)
+    else:
+        print("The number is not in the array.")
+
+    
+    merge_sort(num_array)
+    print(num_array)
+
+if __name__ == "__main__":
+    Merge_sort()
